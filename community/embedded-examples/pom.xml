@@ -33,7 +33,7 @@
     <dependency>
       <groupId>org.neo4j</groupId>
       <artifactId>neo4j</artifactId>
-      <version>1.5.4-SNAPSHOT</version>
+      <version>3.5.0</version>
       <!-- In this context, keep this artifact as type pom -->
       <type>pom</type>
       <exclusions>

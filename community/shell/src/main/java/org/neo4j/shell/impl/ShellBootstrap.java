@@ -19,6 +19,7 @@
  */
 package org.neo4j.shell.impl;
 
+import static io.github.pixee.security.ObjectInputFilters.createSafeObjectInputStream;
 import static org.neo4j.kernel.Config.configValueContainsMultipleParameters;
 
 import java.io.ByteArrayInputStream;
@@ -126,8 +127,8 @@ public class ShellBootstrap implements Serializable
     {
         try
         {
-            return (ShellBootstrap) new ObjectInputStream( new ByteArrayInputStream(
-                    new sun.misc.BASE64Decoder().decodeBuffer( data ) ) ).readObject();
+            return (ShellBootstrap) createSafeObjectInputStream(new ByteArrayInputStream(
+                    new sun.misc.BASE64Decoder().decodeBuffer( data ) )).readObject();
         }
         catch ( Exception e )
         {

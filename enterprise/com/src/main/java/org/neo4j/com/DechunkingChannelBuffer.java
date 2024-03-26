@@ -19,6 +19,7 @@
  */
 package org.neo4j.com;
 
+import io.github.pixee.security.ObjectInputFilters;
 import static org.neo4j.kernel.impl.util.Bits.numbersToBitString;
 
 import java.io.IOException;
@@ -149,6 +150,7 @@ public class DechunkingChannelBuffer implements ChannelBuffer
         try
         {
             ObjectInputStream input = new ObjectInputStream( asInputStream() );
+            ObjectInputFilters.enableObjectFilterIfUnprotected(input);
             cause = (Throwable) input.readObject();
         }
         catch ( Exception e )
